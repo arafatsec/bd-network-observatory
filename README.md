@@ -2,7 +2,7 @@
 
 Independent, continuous measurement of internet shutdowns, throttling and platform blocking in Bangladesh, including **during** full blackouts.
 
-> **Status: design stage.** No probes are deployed yet. This repository holds the plan and will hold the probe software as it is built.
+> **Status: early prototype.** A v0 connectivity logger exists and runs on a single machine, logging locally. It does not run OONI Probe or upload anything yet, and no probes are deployed. This repository holds the plan and the probe software as it is built.
 
 ## Why
 
@@ -28,6 +28,18 @@ Bangladesh's Telecommunication Ordinance 2025 states that internet services cann
 ## Hardware (planned)
 
 Raspberry Pi Zero 2 W, 64 GB microSD and power adapter per probe; mobile probes add a USB LTE modem. A single unit will be tested with OONI Probe before any wider purchase, because the Zero 2 W has 512 MB of memory.
+
+## Run the prototype
+
+The v0 logger checks DNS, TCP and HTTP at fixed intervals and records which layer fails, to local files only. It needs Python 3.11+ and works on Windows and Linux:
+
+```bash
+pip install -r requirements.txt
+python -m probe run --interval 60
+python -m probe summary --date YYYY-MM-DD
+```
+
+See [docs/PROBE.md](docs/PROBE.md) for how it works, what it records and what it deliberately does not record.
 
 ## Safety and ethics
 
