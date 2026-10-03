@@ -37,6 +37,7 @@ The v0 logger checks DNS, TCP and HTTP at fixed intervals and records which laye
 pip install -r requirements.txt
 python -m probe run --interval 60
 python -m probe summary --date YYYY-MM-DD
+python -m probe dashboard --date YYYY-MM-DD --days 7   # HTML dashboard, opens offline
 ```
 
 See [docs/PROBE.md](docs/PROBE.md) for how it works, what it records and what it deliberately does not record.

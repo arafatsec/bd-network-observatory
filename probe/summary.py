@@ -74,7 +74,7 @@ def group_periods(records: Sequence[dict]) -> tuple[Period, ...]:
     return tuple(periods)
 
 
-def _format_duration(period: Period) -> str:
+def format_duration(period: Period) -> str:
     total = int(period.duration.total_seconds())
     hours, rest = divmod(total, 3600)
     minutes, seconds = divmod(rest, 60)
@@ -101,7 +101,7 @@ def format_summary(day: str, records: Sequence[dict], skipped_lines: int) -> str
         lines.append(
             f"{period.start:%Y-%m-%d %H:%M:%S}   "
             f"{period.end:%Y-%m-%d %H:%M:%S}   "
-            f"{_format_duration(period):<11}"
+            f"{format_duration(period):<11}"
             f"{period.classification:<16}"
             f"{period.cycles}"
         )

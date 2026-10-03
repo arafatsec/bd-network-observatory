@@ -50,11 +50,24 @@ pip install -r requirements.txt
 python -m probe run                    # every 60 s until Ctrl+C
 python -m probe run --interval 120     # any interval of 15 s or more
 python -m probe summary --date 2026-10-03
+python -m probe dashboard --date 2026-10-10 --days 7
 ```
 
 Intervals under 15 s are refused, because they add load to the test servers without adding much information. Each cycle prints a single status line (time, classification, latency). Ctrl+C stops the probe, and every completed cycle has already been saved.
 
 `summary` reads one UTC day and lists **outage periods**: consecutive non-`ok` cycles with the same classification. A period starts at its first failing cycle and ends at the first cycle that shows a different state, so start and end are accurate to within one interval. A duration ending in `+` means the outage was still going when the log ended. Gaps longer than three intervals are listed as `no_data`: the probe was not running, which is different from an outage. An outage that crosses midnight UTC appears in both days' summaries.
+
+### Dashboard
+
+`dashboard` turns the logs for one or more UTC days (`--days`, up to 31, ending at `--date`, default today) into a single HTML page, written to `data/dashboard-FIRST_LAST.html` unless `--out` says otherwise. It shows:
+
+- headline numbers: cycles recorded, share fully ok, outages and their total time, slowdowns, median latency, and data coverage (how much of the time span has records)
+- a timeline with the status of every cycle, where gaps appear as `no data`
+- TCP connect latency over time against the rolling baseline
+- success rate and median time for each resolver, TCP target and HTTP URL
+- every outage, slowdown and gap, as in `summary` but across days, so outages crossing midnight stay in one piece
+
+The page is self-contained: inline SVG charts, no JavaScript, nothing loaded from the internet. It opens offline in any browser, works on phones, and follows the system's light or dark mode. It contains only what the logs contain, so it is written into the gitignored `data/` folder by default.
 
 ### Tests
 
