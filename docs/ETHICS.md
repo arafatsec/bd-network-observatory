@@ -1,6 +1,6 @@
 # Safety and ethics
 
-Measuring censorship can carry risk for the people who host probes, even where shutdowns are now prohibited, because political conditions can change. This project follows these rules from day one.
+Measuring censorship can carry risk for the people who host probes, even where shutdowns are now prohibited, because political conditions can change. This project follows these rules from day one. The [safety plan](SAFETY-PLAN.md) turns them into concrete steps, and hosts receive the [information sheet and consent form](CONSENT.md).
 
 ## Probe hosts
 
@@ -15,8 +15,8 @@ Measuring censorship can carry risk for the people who host probes, even where s
 
 ## SIM cards
 
-Bangladeshi SIM cards are registered to a person's national ID. How probe SIMs are registered, and to whom, will be decided before deployment and documented here.
+Bangladeshi SIM cards are registered to a person's national ID. A probe SIM is never registered to its host. The options (organisation-registered, preferred; or registered to the project lead) are compared in the [safety plan](SAFETY-PLAN.md#6-sim-cards), and the choice will be recorded here before any mobile probe is deployed.
 
 ## Review
 
-An independent security and ethics review will take place before any probe is deployed.
+An independent security and ethics review will take place before any probe is placed with a host other than the project lead. The sign-off checklist is in the [safety plan](SAFETY-PLAN.md#8-review-and-sign-off). The only probe running so far is a one-week test on the project lead's own test PC, on a network whose use the project lead has authorised, with nothing uploaded.
